@@ -19,21 +19,23 @@ export interface ThemeConfig {
   footerName: string
   poweredList: { name: string; url: string }[]
 
-  //gitalk
-  clientID: string
-  clientSecret: string
-  repo: string
-  owner: string
-  admin: string[]
+  //giscus
+  giscusRepo: string
+  giscusRepoId: string
+  giscusCategory: string
+  giscusCategoryId: string
+  giscusMapping: string
+  giscusStrict: string
+  giscusReactionsEnabled: string
+  giscusEmitMetadata: string
+  giscusInputPosition: string
+  giscusTheme: string
 }
 
 export default defineConfigWithTheme<ThemeConfig>({
   lang: 'zh-CN',
   head: [
     ['link', { rel: 'shortcut icon', href: '/favicon.ico' }],
-    // gitalk
-    ['link', { rel: 'stylesheet', href: 'https://unpkg.com/gitalk/dist/gitalk.css' }],
-    ['script', { src: 'https://unpkg.com/gitalk/dist/gitalk.min.js' }],
     // bluearchive font
     [
       'link',
@@ -100,12 +102,17 @@ export default defineConfigWithTheme<ThemeConfig>({
       { name: 'GitHub Pages', url: 'https://docs.github.com/zh/pages' },
     ],
 
-    //gitalk配置
-    clientID: 'Ov23liqaOOQAszWrFsSJ',
-    clientSecret: 'd895fd6b555e2bf1e1e5b7c5a29880d05c530196',
-    repo: 'hb.ba.blog',
-    owner: 'HoshinoHB',
-    admin: ['HoshinoHB'],
+    //giscus配置
+    giscusRepo: 'HoshinoHB/hb.ba.blog',
+    giscusRepoId: 'R_kgDOTMEI6A',
+    giscusCategory: 'Announcements',
+    giscusCategoryId: 'DIC_kwDOTMEI6M4CltSJ',
+    giscusMapping: 'pathname',
+    giscusStrict: '0',
+    giscusReactionsEnabled: '1',
+    giscusEmitMetadata: '0',
+    giscusInputPosition: 'bottom',
+    giscusTheme: 'auto',
   },
   markdown: {
     theme: 'solarized-dark',
