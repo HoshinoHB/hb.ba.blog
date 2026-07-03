@@ -81,7 +81,7 @@ export default defineConfigWithTheme<ThemeConfig>({
     //banner区配置
     videoBanner: false,
     name: "Sensei HoshinoHB",
-    welcomeText: '身份认证已通过，沙勒欢迎你'
+    welcomeText: '身份认证已通过，沙勒欢迎你',
     motto: ['和你的日常，就是奇迹', '何気ない日常で、ほんの少しの奇跡を見つける物語。'],
     social: [
       { icon: 'github', url: 'https://github.com/HoshinoHB' },
