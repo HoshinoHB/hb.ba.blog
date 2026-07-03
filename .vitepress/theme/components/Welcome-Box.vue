@@ -22,8 +22,9 @@
         </span>
         <ul>
           <li v-for="item in social" :key="item.url">
-            <a :href="item.url" target="_blank" rel="noopener noreferrer">
-              <i :class="`iconfont icon-${item.icon} social`"></i>
+  <a :href="item.url" target="_blank" rel="noopener noreferrer">
+    <img v-if="item.icon === 'douyin'" src="/douyin.svg" style="width: 1em; height: 1em; vertical-align: middle;" />
+    <i v-else :class="`iconfont icon-${item.icon} social`"></i>
             </a>
           </li>
         </ul>
