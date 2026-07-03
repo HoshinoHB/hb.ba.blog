@@ -1,9 +1,10 @@
 <template>
   <div class="view-box container">
-    <Content class="content" />   <!-- 改成大写 C -->
+    <Content class="content" />
     <Giscus />
   </div>
 </template>
+
 <script setup lang="ts">
 import Giscus from './Giscus.vue'
 import { data as posts } from '../utils/posts.data'
