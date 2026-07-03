@@ -6,18 +6,24 @@
 
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import { useData } from 'vitepress'
+import { useData, useRoute } from 'vitepress'
 import md5 from 'md5'
 const themeConfig = useData().theme.value
+const route = useRoute()
 declare var Gitalk: any
 onMounted(() => {
+  // 提取文件名作为唯一标识
+  const pathname = route.path
+  // 移除前后斜杠，用于生成 ID
+  const cleanPath = pathname.replace(/^\/|\/$/g, '')
+  
   const commentConfig = {
     clientID: themeConfig.clientID,
     clientSecret: themeConfig.clientSecret,
     repo: themeConfig.repo,
     owner: themeConfig.owner,
     admin: themeConfig.admin,
-    id: md5(location.pathname).toString(),
+    id: md5(cleanPath).toString(),
     distractionFreeMode: false,
   }
 
