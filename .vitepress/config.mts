@@ -101,8 +101,8 @@ export default defineConfigWithTheme<ThemeConfig>({
     ],
 
     //gitalk配置
-    clientID: 'Ov23lia9U9wFN3WMyoKK',
-    clientSecret: 'b2418ab598c188c43a247c99e728dd2735d58c3b',
+    clientID: 'Ov23liqaOOQAszWrFsSJ',
+    clientSecret: '8b4fa8f22be7799ab934c2737f3c6f2600f0687d',
     repo: 'hb.ba.blog',
     owner: 'HoshinoHB',
     admin: ['HoshinoHB'],
