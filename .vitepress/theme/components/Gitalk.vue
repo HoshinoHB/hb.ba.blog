@@ -6,9 +6,10 @@
 
 <script setup lang="ts">
 import { onMounted, watch, nextTick } from 'vue'
-import { useRoute } from 'vitepress'
+import { useRoute, useData } from 'vitepress'
 
 const route = useRoute()
+const { theme } = useData()
 
 function loadGiscus() {
   const container = document.querySelector('.giscus-wrapper .giscus')
@@ -18,16 +19,16 @@ function loadGiscus() {
 
   const script = document.createElement('script')
   script.src = 'https://giscus.app/client.js'
-  script.setAttribute('data-repo', 'HoshinoHB/hb.ba.blog')
-  script.setAttribute('data-repo-id', 'R_kgDOTMEI6A')
-  script.setAttribute('data-category', 'Announcements')
-  script.setAttribute('data-category-id', 'DIC_kwDOTMEI6M4CltSJ')
-  script.setAttribute('data-mapping', 'pathname')
-  script.setAttribute('data-strict', '0')
-  script.setAttribute('data-reactions-enabled', '1')
-  script.setAttribute('data-emit-metadata', '0')
-  script.setAttribute('data-input-position', 'bottom')
-  script.setAttribute('data-theme', 'auto')
+  script.setAttribute('data-repo', theme.value.giscusRepo)
+  script.setAttribute('data-repo-id', theme.value.giscusRepoId)
+  script.setAttribute('data-category', theme.value.giscusCategory)
+  script.setAttribute('data-category-id', theme.value.giscusCategoryId)
+  script.setAttribute('data-mapping', theme.value.giscusMapping)
+  script.setAttribute('data-strict', theme.value.giscusStrict)
+  script.setAttribute('data-reactions-enabled', theme.value.giscusReactionsEnabled)
+  script.setAttribute('data-emit-metadata', theme.value.giscusEmitMetadata)
+  script.setAttribute('data-input-position', theme.value.giscusInputPosition)
+  script.setAttribute('data-theme', theme.value.giscusTheme)
   script.setAttribute('data-lang', 'zh-CN')
   script.setAttribute('crossorigin', 'anonymous')
   script.async = true
