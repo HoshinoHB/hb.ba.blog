@@ -67,11 +67,7 @@ export default defineConfigWithTheme<ThemeConfig>({
   ignoreDeadLinks: true,
   // 生成站点地图
   // sitemap: {
-<<<<<<< HEAD
   //   hostname: 'https://hb-ba-blog.pages.dev/'
-=======
-  //   hostname: 'https://hb-ba-blog.pages.dev/',
->>>>>>> 2472fa1d73616c4bd73305887fb7a552ee168518
   // },
   title: "Sensei HoshinoHB",
   description: "Sensei HoshinoHB",
@@ -85,11 +81,7 @@ export default defineConfigWithTheme<ThemeConfig>({
     //banner区配置
     videoBanner: false,
     name: "Sensei HoshinoHB",
-<<<<<<< HEAD
-    welcomeText: '身份认证已通过，沙勒欢迎你',
-=======
-    welcomeText: '身份认证已通过，蔚蓝档案期待与你同行！!',
->>>>>>> 2472fa1d73616c4bd73305887fb7a552ee168518
+    welcomeText: '身份认证已通过，沙勒欢迎你'
     motto: ['和你的日常，就是奇迹', '何気ない日常で、ほんの少しの奇跡を見つける物語。'],
     social: [
       { icon: 'github', url: 'https://github.com/HoshinoHB' },
