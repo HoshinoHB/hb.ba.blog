@@ -1,47 +1,21 @@
 <template>
-  <div class="giscus-container">
-    <script
-      src="https://giscus.app/client.js"
-      data-repo="HoshinoHB/hb.ba.blog"
-      data-repo-id="R_kgDOTMEI6A"
-      data-category="Announcements"
-      data-category-id="DIC_kwDOTMEI6M4CltSJ"
-      data-mapping="pathname"
-      data-strict="0"
-      data-reactions-enabled="1"
-      data-emit-metadata="0"
-      data-input-position="bottom"
-      data-theme="auto"
-      data-lang="zh-CN"
-      crossorigin="anonymous"
-      async
-    ></script>
+  <div class="giscus-wrapper">
+    <div class="giscus"></div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { onMounted, watch } from 'vue'
+import { onMounted, watch, nextTick } from 'vue'
 import { useRoute } from 'vitepress'
 
 const route = useRoute()
 
-// 当路由变化时重新加载 giscus
-watch(
-  () => route.path,
-  () => {
-    reloadGiscus()
-  },
-)
+function loadGiscus() {
+  const container = document.querySelector('.giscus-wrapper .giscus')
+  if (!container) return
 
-// 重新加载 giscus 脚本
-function reloadGiscus() {
-  // 移除旧的 iframe
-  const giscusFrame = document.querySelector('iframe.giscus-frame')
-  if (giscusFrame) {
-    giscusFrame.remove()
-  }
+  container.innerHTML = ''
 
-  // 重新加载脚本
   const script = document.createElement('script')
   script.src = 'https://giscus.app/client.js'
   script.setAttribute('data-repo', 'HoshinoHB/hb.ba.blog')
@@ -58,20 +32,24 @@ function reloadGiscus() {
   script.setAttribute('crossorigin', 'anonymous')
   script.async = true
 
-  const container = document.querySelector('.giscus-container')
-  if (container) {
-    container.appendChild(script)
-  }
+  container.appendChild(script)
 }
+
+onMounted(() => {
+  nextTick(() => loadGiscus())
+})
+
+watch(
+  () => route.path,
+  () => {
+    nextTick(() => loadGiscus())
+  },
+)
 </script>
 
-<style scoped lang="less">
-.giscus-container {
+<style scoped>
+.giscus-wrapper {
   margin-top: 24px;
-}
-
-// Giscus 主题适配
-:deep(.giscus-frame) {
-  width: 100%;
+  padding: 0 16px;
 }
 </style>
