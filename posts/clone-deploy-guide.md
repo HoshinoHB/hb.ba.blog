@@ -1,7 +1,7 @@
 ---
 title: 项目的克隆与部署
 date: 2026-07-04
-tags: ［ vue, vitepress]
+tags: [ vue, vitepress]
 ---
 
 # 首先
