@@ -1,14 +1,14 @@
 <template>
   <div class="view-box container">
     <content class="content" />
-    <Gitalk v-if="themeConfig.clientID"></Gitalk>
+    <Giscus />
   </div>
 </template>
+
 <script setup lang="ts">
-import Gitalk from './Gitalk.vue'
+import Giscus from './Giscus.vue'
 import { data as posts } from '../utils/posts.data'
 import { useData, useRoute } from 'vitepress'
-import { useStore } from '../store'
 const route = useRoute()
 const data = useData()
 const base = data.site.value.base
