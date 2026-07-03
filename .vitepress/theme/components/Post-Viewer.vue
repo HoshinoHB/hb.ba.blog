@@ -8,6 +8,7 @@
 import Giscus from './Giscus.vue'
 import { data as posts } from '../utils/posts.data'
 import { useData, useRoute } from 'vitepress'
+import { useStore } from '../store'
 const route = useRoute()
 const data = useData()
 const base = data.site.value.base
@@ -45,7 +46,6 @@ watch(
   },
 )
 
-const themeConfig = useData().theme.value
 </script>
 <style lang="less">
 .view-box {
