@@ -67,10 +67,10 @@ export default defineConfigWithTheme<ThemeConfig>({
   ignoreDeadLinks: true,
   // 生成站点地图
   // sitemap: {
-  //   hostname: 'https://vitepress-theme-bluearchive.vercel.app',
+  //   hostname: 'https://hb-ba-blog.pages.dev/'
   // },
-  title: "Sensei's 部落格",
-  description: "Sensei's 部落格",
+  title: "Sensei HoshinoHB",
+  description: "Sensei HoshinoHB",
   themeConfig: {
     // navBar
     menuList: [
@@ -80,14 +80,14 @@ export default defineConfigWithTheme<ThemeConfig>({
 
     //banner区配置
     videoBanner: false,
-    name: "Sensei's 部落格",
-    welcomeText: 'Hello, VitePress',
+    name: "Sensei HoshinoHB",
+    welcomeText: '身份认证已通过，沙勒欢迎你',
     motto: ['和你的日常，就是奇迹', '何気ない日常で、ほんの少しの奇跡を見つける物語。'],
     social: [
       { icon: 'github', url: 'https://github.com/' },
       { icon: 'bilibili', url: 'https://www.bilibili.com/' },
       { icon: 'qq', url: 'https://im.qq.com/index/' },
-      { icon: 'wechat', url: 'https://weixin.qq.com/' },
+      { icon: 'douyin', url: 'https://v.douyin.com/EWF0B9tiWWU/' },
     ],
 
     //spine语音配置，可选zh/jp
