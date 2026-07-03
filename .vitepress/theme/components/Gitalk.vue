@@ -1,72 +1,77 @@
 <template>
-  <div class="gitalk-container">
-    <div id="gitalk-container"></div>
+  <div class="giscus-container">
+    <script
+      src="https://giscus.app/client.js"
+      data-repo="HoshinoHB/hb.ba.blog"
+      data-repo-id="R_kgDOTMEI6A"
+      data-category="Announcements"
+      data-category-id="DIC_kwDOTMEI6M4CltSJ"
+      data-mapping="pathname"
+      data-strict="0"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="bottom"
+      data-theme="auto"
+      data-lang="zh-CN"
+      crossorigin="anonymous"
+      async
+    ></script>
   </div>
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue'
-import { useData, useRoute } from 'vitepress'
-import md5 from 'md5'
-const themeConfig = useData().theme.value
+import { onMounted, watch } from 'vue'
+import { useRoute } from 'vitepress'
+
 const route = useRoute()
-declare var Gitalk: any
-onMounted(() => {
-  // 提取文件名作为唯一标识
-  const pathname = route.path
-  // 移除前后斜杠，用于生成 ID
-  const cleanPath = pathname.replace(/^\/|\/$/g, '')
-  
-  const commentConfig = {
-    clientID: themeConfig.clientID,
-    clientSecret: themeConfig.clientSecret,
-    repo: themeConfig.repo,
-    owner: themeConfig.owner,
-    admin: themeConfig.admin,
-    id: md5(cleanPath).toString(),
-    distractionFreeMode: false,
+
+// 当路由变化时重新加载 giscus
+watch(
+  () => route.path,
+  () => {
+    reloadGiscus()
+  },
+)
+
+// 重新加载 giscus 脚本
+function reloadGiscus() {
+  // 移除旧的 iframe
+  const giscusFrame = document.querySelector('iframe.giscus-frame')
+  if (giscusFrame) {
+    giscusFrame.remove()
   }
 
-  const gitalk = new Gitalk(commentConfig)
-  gitalk.render('gitalk-container')
-})
+  // 重新加载脚本
+  const script = document.createElement('script')
+  script.src = 'https://giscus.app/client.js'
+  script.setAttribute('data-repo', 'HoshinoHB/hb.ba.blog')
+  script.setAttribute('data-repo-id', 'R_kgDOTMEI6A')
+  script.setAttribute('data-category', 'Announcements')
+  script.setAttribute('data-category-id', 'DIC_kwDOTMEI6M4CltSJ')
+  script.setAttribute('data-mapping', 'pathname')
+  script.setAttribute('data-strict', '0')
+  script.setAttribute('data-reactions-enabled', '1')
+  script.setAttribute('data-emit-metadata', '0')
+  script.setAttribute('data-input-position', 'bottom')
+  script.setAttribute('data-theme', 'auto')
+  script.setAttribute('data-lang', 'zh-CN')
+  script.setAttribute('crossorigin', 'anonymous')
+  script.async = true
+
+  const container = document.querySelector('.giscus-container')
+  if (container) {
+    container.appendChild(script)
+  }
+}
 </script>
 
-<style>
-.gt-container .gt-header-textarea {
-  color: var(--font-color-grey);
-  background-color: var(--general-background-color) !important;
-  transition: background-color 0.5s, color 0.5s !important;
-  
-}
-.gt-container .gt-comment-content{
-  background-color: var(--gitalk-background) !important;
-  border-radius: 10px;
-  p{
-    color: var(--font-color-grey);
-  }
-  ol{
-    color: var(--gitalk-font-color-ol);
-  }
-  .email-fragment {
-    color: var(--font-color-grey);
-  }
-  .email-hidden-reply {
-    color: var(--font-color-grey);
-  }
+<style scoped lang="less">
+.giscus-container {
+  margin-top: 24px;
 }
 
-.gt-container .gt-comment-content:hover {
-  -webkit-box-shadow: var(--gitalk-shadow) !important;
-          box-shadow: var(--gitalk-shadow) !important; 
-}
-
-.gt-container .gt-comment-body {
-  color: #ffffff !important;
-}
-
-.markdown-body blockquote {
-  padding: 0 1em;
-  border-left: var(--gitalk-border-left) !important;
+// Giscus 主题适配
+:deep(.giscus-frame) {
+  width: 100%;
 }
 </style>
