@@ -2,14 +2,6 @@
 title: 项目的克隆与部署
 date: 2026-07-04
 tags: ［ vue, vitepress]
-pinned: true
-head:
-  - - meta
-    - name: description
-      content: 项目的克隆与部署
-  - - meta
-    - name: keywords
-      content: 项目的克隆与部署
 ---
 
 # 首先
